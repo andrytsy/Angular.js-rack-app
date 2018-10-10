@@ -1,0 +1,63 @@
+﻿<div class="config-menu">
+  <ul>
+    <li>
+      <h1>Настройки комнаты</h1>
+    </li>
+    <li>
+      <span>Материал стен:</span><br>
+      <div 
+        class="material-block"
+        ng-repeat="material in wallMaterials | filter:isWall"
+        ng-click="setMaterial(material.id, 'wall')"
+        ng-style="{'background-image': 'url(img/ico/materials/' + material.id + '.jpg)' }"
+      ></div>
+      <div ng-bind="material.name"></div>
+    </li>
+    <li>
+      <span>Материал пола:</span><br>
+      <div 
+        class="material-block"
+        ng-repeat="material in wallMaterials | filter:isFloor"
+        ng-click="setMaterial(material.id, 'floor')"
+        ng-style="{'background-image': 'url(img/ico/materials/' + material.id + '.jpg)' }"
+      ></div>
+      <div ng-bind="material.name"></div>
+    </li>
+    <li>
+      <span>Длинна стен (.мм):</span> 
+      <input 
+        type="number"
+        min="800"
+        max="10000"
+        step="10"
+        placeholder="от 800 до 10000"
+        ng-model="wallWidth"
+        ng-change="updateRoomData(wallWidth, 'width')"
+      >
+    </li>
+    <li>
+      <span>Ширина стен (.мм):</span> 
+      <input 
+        type="number"
+        min="1800"
+        max="10000"
+        step="10"
+        placeholder="от 1800 до 10000"
+        ng-model="wallHeight"
+        ng-change="updateRoomData(wallHeight, 'height')"
+      >
+    </li>
+    <li>
+      <span>Высота потолков (.мм):</span> 
+      <input 
+        type="number"
+        min="800"
+        max="10000"
+        step="10"
+        placeholder="от 800 до 10000"
+        ng-model="wallLength"
+        ng-change="updateRoomData(wallLength, 'length')"
+      >
+    </li>
+  </ul>
+</div>

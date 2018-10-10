@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="rackApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
+    <meta name="description" content="It application created for configuration rack construction" />
+    <title>Rack App</title>
+    <link rel='shortcut icon' href='img/ico/b4w.png' />
+    <link type='text/css' rel='stylesheet' href='css/style.css'/>
+
+    <!-- LIBS -->
+    <script type='text/javascript' src='lib/angular/angular.min.js'></script>
+    <script type='text/javascript' src='lib/jquery/jquery-3.1.1.min.js'></script>
+    <!-- <script type='text/javascript' src='lib/b4w/16.7/b4w.min.js'></script> -->
+    <script type='text/javascript' src='lib/b4w/16.11/b4w.min.js'></script>
+
+
+    <!-- Angular MODULE -->
+    <script type='text/javascript' src='angularApp/modules/rackApp.js'></script>
+
+    <!-- Angular CONSTANTS -->
+    <script type='text/javascript' src='angularApp/constants/typesOfObjects3d.js'></script>
+    <script type='text/javascript' src='angularApp/constants/namesOfObjects3d.js'></script>
+
+    <!-- Angular SERVICES -->
+    <script type='text/javascript' src='angularApp/services/b4wService.js'></script>
+    <script type='text/javascript' src='angularApp/services/editTarget.js'></script>
+    <script type='text/javascript' src='angularApp/services/busyPositions.js'></script>
+    <script type='text/javascript' src='angularApp/services/parametersOfRoom.js'></script>
+    <script type='text/javascript' src='angularApp/services/coordinates.js'></script>
+    <script type='text/javascript' src='angularApp/services/rackServer.js'></script>
+
+    <!-- Angular FACTORY -->
+    <script type='text/javascript' src='angularApp/factories/rackObject3d.js'></script>
+    <script type='text/javascript' src='angularApp/factories/rackGroup3d.js'></script>
+    
+
+    <!-- Angular DIRECTIVES -->
+    <script type='text/javascript' src='angularApp/directives/rackMain/rackMain.js'></script>
+    <script type='text/javascript' src='angularApp/directives/rackLogin/rackLogin.js'></script>
+    <script type='text/javascript' src='angularApp/directives/rackCanvas/rackCanvas.js'></script>
+    <script type='text/javascript' src='angularApp/directives/rackControlPanel/rackControlPanel.js'></script>
+    <script type='text/javascript' src='angularApp/directives/rackEditTarget/rackEditTarget.js'></script>
+    <script type='text/javascript' src='angularApp/directives/rackRoomEditor/rackRoomEditor.js'></script>
+    <script type='text/javascript' src='angularApp/directives/rackCalculate/rackCalculate.js'></script>
+    <script type='text/javascript' src='angularApp/directives/rackAsk/rackAsk.js'></script>
+
+    
+</head>
+<body>
+    <!-- Main directive of application -->
+    <rack-main></rack-main>
+</body>
+</html>

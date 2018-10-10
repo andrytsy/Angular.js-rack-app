@@ -1,0 +1,18 @@
+﻿[
+  {
+    "name": "rail",
+    "title": "Рельса"
+  },
+  {
+    "name": "rack",
+    "title": "Стойка"
+  },
+  {
+    "name": "bracket",
+    "title": "Кронштейн"
+  },
+  {
+    "name": "shelf",
+    "title": "Полка"
+  }
+]

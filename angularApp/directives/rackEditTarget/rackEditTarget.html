@@ -1,0 +1,99 @@
+﻿<div class="config-menu">
+  <ul>
+    <li>
+      <h1>"{{target.name}}"</h1>
+    </li>
+    <li>
+      <span class="edit_button-delete all" ng-click="sectionDelete()">Удалить комплект</span>
+    </li>
+  </ul>
+  
+  <!-- Kit coordinates -->
+  <div class="edit_wrapp-block" ng-click="toggleBlockCoordinates()">
+    <div class="edit_wrapp-block_title">
+      <p ng-class="{'edit_wrapp-block_arrow': showCoordinates, 'edit_wrapp-block_arrow-active': !showCoordinates}">+</p> 
+      <p ng-class="{'edit_wrapp-block_arrow': !showCoordinates, 'edit_wrapp-block_arrow-active': showCoordinates}">-</p> 
+      Позиция комплекта
+    </div>
+    <div class="edit_position" ng-show="showCoordinates">
+      От потолка(мм.): <span class="config-menu_text_red">{{kitHight}}</span><br>
+      От пола(мм.): <span class="config-menu_text_red">{{kitWidth}}</span><br>
+      От левой стены(мм.): <span class="config-menu_text_red">{{kitLeft}}</span><br>
+      От правой стены(мм.): <span class="config-menu_text_red">{{kitRight}}</span>
+    </div>
+  </div>
+  <!-- Kit coordinates END -->
+  
+  <!-- Moving of section -->
+  <div class="edit_wrapp-block">
+    <div class="edit_wrapp-block_title" ng-click="toggleBlockMoveKit()">
+      <p ng-class="{'edit_wrapp-block_arrow': showMoveKit, 'edit_wrapp-block_arrow-active': !showMoveKit}">+</p> 
+      <p ng-class="{'edit_wrapp-block_arrow': !showMoveKit, 'edit_wrapp-block_arrow-active': showMoveKit}">-</p> 
+      Подвинуть комплект
+    </div>
+    <div ng-show="showMoveKit">
+      <input type="Number" step="1" ng-model="kitOffset" class="edit_move_input">
+      <div class="edit_button_offset top"    ng-click="updatePosition('top')"    title="Вверх"></div>
+      <div class="edit_button_offset bottom" ng-click="updatePosition('bottom')" title="Вниз"></div>
+      <div class="edit_button_offset left"   ng-click="updatePosition('left')"   title="Влево"></div>
+      <div class="edit_button_offset right"  ng-click="updatePosition('right')"  title="Вправо"></div>
+    </div>
+  </div>
+  <!-- Moving of section END -->
+
+  <!-- Shelves EDITING -->
+  <div class="edit_wrapp-block" >
+    <div class="edit_wrapp-block_title" ng-click="toggleShelfs()">
+      <p ng-class="{'edit_wrapp-block_arrow': showShelfs, 'edit_wrapp-block_arrow-active': !showShelfs}">+</p> 
+      <p ng-class="{'edit_wrapp-block_arrow': !showShelfs, 'edit_wrapp-block_arrow-active': showShelfs}">-</p>
+      Полки комплекта
+    </div>
+    <div ng-repeat="shelf in shelfs" class="edit_wrapp-block_item" ng-show="showShelfs">
+      <b class="edit_wrapp-block_item_title">Полка "{{shelf.title}}"</b><br>
+      <span class="edit_button-edit" ng-hide="shelf.editMode" ng-click="editOpen(shelf)" title="Редактировать">+</span> 
+      <span class="edit_button-edit" ng-show="shelf.editMode" ng-click="editClose(shelf)" title="Закрыть">-</span> 
+      <div class="edit_wrapp-block_buttons-menu" ng-show="shelf.editMode">
+        <span class="edit_button-move" ng-click="shelfUp(shelf)">Вверх</span>
+        <span class="edit_button-move" ng-click="shelfDown(shelf)">Вниз</span>
+        <span class="edit_button-delete" ng-click="shelfDelete(shelf)">Удалить</span>
+        <span class="edit_button-move flip" ng-click="shelfFlip(shelf)">Перевернуть полку</span> 
+        <span class="edit_button-move flip" ng-click="shelfHung(shelf)">Вешало показать/скрыть</span> 
+        <span class="edit_button-move flip" ng-click="shelfCrop(shelf)">Обрезать полку по:</span>
+        <label>
+          <select 
+            class="edit_select"
+            ng-model="avalible" 
+            ng-options="'Стойку ' + rack.title for rack in racks"
+            ng-change="updateAvalibleRack(avalible)"
+            required>
+          </select>
+        </label>
+        <span class="edit_button-move flip" ng-click="addBasket(shelf)">Добавить корзину</span> 
+      </div>
+    </div>
+    <div class="edit_button-add" ng-click="addShelf()" ng-show="showShelfs">Добавить полку</div>
+  </div>
+  <!-- Shelves EDITING END -->
+
+  <!-- Racks EDITING -->
+  <div class="edit_wrapp-block" >
+    <div class="edit_wrapp-block_title" ng-click="toggleRacks()">
+      <p ng-class="{'edit_wrapp-block_arrow': showRacks, 'edit_wrapp-block_arrow-active': !showRacks}">+</p> 
+      <p ng-class="{'edit_wrapp-block_arrow': !showRacks, 'edit_wrapp-block_arrow-active': showRacks}">-</p> 
+      Стойки комплекта
+    </div>
+    <div ng-repeat="rack in racks" ng-class="{'edit_wrapp-block_item': !rack.immortal, 'edit_wrapp-block_item-disabled': rack.immortal}" ng-show="showRacks">
+      <b ng-if="rack.immortal" class="edit_wrapp-block_item_title" title="Этот объект нельзя редактировать!">Стойка "{{rack.title}}"</b>
+      <b ng-if="!rack.immortal" class="edit_wrapp-block_item_title">Стойка "{{rack.title}}"</b><br>
+      <span class="edit_button-edit" ng-if="!rack.immortal" ng-hide="rack.editMode" ng-click="editOpen(rack)" title="Редактировать">+</span>
+      <span class="edit_button-edit" ng-if="!rack.immortal" ng-show="rack.editMode" ng-click="editClose(rack)" title="Закрыть">-</span> 
+      <div class="edit_wrapp-block_buttons-menu" ng-show="rack.editMode && !rack.immortal">
+        <input type="Number" step="1" ng-model="rackOffset" ng-change="updateRackOffset(rackOffset)" class="edit_move_input">
+        <div class="edit_button_offset right" ng-click="movementRack(rack)" title="Вправо"></div>
+        <div class="edit_button-delete" ng-click="removeRack(rack)">Удалить</div>
+      </div>
+    </div>
+    <div class="edit_button-add" ng-click="addRack()" ng-show="showRacks">Добавить стойку</div>
+  </div>
+  <!-- Racks EDITING END -->
+</div>

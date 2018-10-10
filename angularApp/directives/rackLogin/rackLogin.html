@@ -1,0 +1,49 @@
+﻿<div class="login-form">
+	<!-- Authorization form -->
+	<form id="authorization" class="login-form_main-container" ng-if="showAuthorization">
+		<div class="login-form_main-container_logo"></div>
+		<div class="login-form_main-container_title">Авторизация</div>
+		<div class="login-form_main-container_item">
+			Логин: <input type="text" name="auth_login" placeholder="Введите Логин/Email" ng-model="login">
+		</div>
+		<div class="login-form_main-container_item">
+			Пароль: <input type="password" name="auth_password" placeholder="Введите пароль" ng-model="password">
+		</div>
+		<div class="login-form_main-container_item">
+			<input type="submit" class="login-form_main-container_item_authorization-btn" ng-class="{'login-form_main-container_item_authorization preloader': showPreloader}" ng-click="signIn(login, password)" value="Войти">
+			<div class="login-form_main-container_item_registration" ng-click="runRegistration()">Регистрация</div>
+		</div>
+		<div class="login-form_main-container_error" ng-if="showError && showAuthorization">
+			Неверное имя пользователя или пароль. Проверьте правильность введенных данных.
+		</div>
+	</form>
+	<!-- Authorization form END -->
+	<!-- Registration form -->
+	<form id="registration" class="login-form_main-container" ng-if="showRegistration">
+		<div class="login-form_main-container_logo"></div>
+		<div class="login-form_main-container_title">Регистрация</div>
+		<div class="login-form_main-container_item">
+			Ф.И.О.: <input type="text" name="username" placeholder="Иванов Иван Иванович" required>
+		</div>
+		<div class="login-form_main-container_item">
+			Логин: <input type="text" name="login" placeholder="Login" required>
+		</div>
+		<div class="login-form_main-container_item">
+			Телефон: <input type="text" name="phone_number" placeholder="+7(800)100-20-30" required>
+		</div>
+		<div class="login-form_main-container_item">
+			Пароль: <input type="password" name="password" placeholder="Password" required>
+		</div>
+		<div class="login-form_main-container_item">
+			Повторите пароль: <input type="password" name="r_password" placeholder="Повторите пароль" required>
+		</div>
+		<div class="login-form_main-container_item">
+			<input type="submit" name="registration-btn" class="login-form_main-container_item_registration-btn" ng-click="userRegistration()" value="Зарегистрироваться">
+			<div class="login-form_main-container_item_registration" ng-click="runAuthorization()">Отмена</div>
+		</div>
+		<div class="login-form_main-container_error" ng-if="showError && showRegistration">
+			Неверное имя пользователя или пароль. Проверьте правильность введенных данных.
+		</div>
+	</form>
+	<!-- Registration form END -->
+</div>

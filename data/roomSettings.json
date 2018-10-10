@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Кирпич",
+    "type": "wall",
+    "id": "brick1",
+    "active": true
+  },
+  {
+    "name": "Кирпич2",
+    "type": "wall",
+    "id": "brick2",
+    "active": false
+  },
+  {
+    "name": "Обои",
+    "type": "wall",
+    "id": "wallpaper2",
+    "active": false
+  },
+  {
+    "name": "Плитка",
+    "type": "wall",
+    "id": "tile3",
+    "active": false
+  },
+  {
+    "name": "Плитка",
+    "type": "floor",
+    "id": "tile4",
+    "active": false
+  },
+  {
+    "name": "Плитка",
+    "type": "all",
+    "id": "tile2",
+    "active": false
+  },
+  {
+    "name": "Ковер",
+    "type": "floor",
+    "id": "kover1",
+    "active": false
+  },
+  {
+    "name": "Ламинат",
+    "type": "floor",
+    "id": "laminate1",
+    "active": false
+  },
+  {
+    "name": "Дерево",
+    "type": "all",
+    "id": "wood1",
+    "active": false
+  },
+  {
+    "name": "Дерево",
+    "type": "floor",
+    "id": "asfalt1",
+    "active": false
+  }
+]

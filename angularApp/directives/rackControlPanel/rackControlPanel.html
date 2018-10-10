@@ -1,0 +1,169 @@
+﻿<!-- Main controll panel -->
+<div class="control-panel" ng-if="showControlPanel">
+  <!-- Add section -->
+  <div class="control-panel_button" ng-click="openConfigsMenu()">Создать комплект
+    <div class="control-panel_button-ico plus"></div>
+  </div>
+  <!-- Add section END -->
+  <!-- List of sections -->
+  <div 
+    class="control-panel_groups" 
+    ng-if="groups.length" 
+  >Комплекты
+    <ul class="control-panel_groups_wrapp">
+      <li 
+        class="control-panel_button-group" 
+        ng-repeat="group in groups track by $index"
+        ng-click="pick(group)"
+      >{{group.name}}
+      </li>
+    </ul>
+  </div>
+  <!-- List of sections END -->
+  <!-- Remove all object -->
+  <div 
+    class="control-panel_button_clear" 
+    ng-if="groups.length" 
+    ng-click="clearAll()"
+  >Очистить
+    <div class="control-panel_button-ico delete"></div>
+  </div>
+  <!-- Remove all object END -->
+  <!-- Room editing -->
+  <div class="control-panel_button" ng-click="openRoomEditor()">Настройки комнаты
+    <div class="control-panel_button-ico edit-room"></div>
+  </div>
+  <!-- Room editing END -->
+  <!-- Question -->
+  <div class="control-panel_button" ng-click="toggleAsk()">Задать вопрос
+    <div class="control-panel_button-ico question"></div>
+  </div>
+  <!-- Question END -->
+  <!-- Get the value -->
+  <div class="control-panel_button" ng-click="calulate()">Получить расчет
+    <div class="control-panel_button-ico get_value"></div>
+  </div>
+  <!-- Get the value END -->
+  <div class="control-panel_logo"></div>
+</div>
+<!-- Main controll panel END -->
+<!-- Button close -->
+<div class="button-close" ng-if="showConfigs || showEditTarget || showRoomEditor" ng-click="closePanel()">+</div>
+<!-- Button close END -->
+<!-- Panel of kit configuration -->
+<div
+  class="config-menu"
+  ng-if="showConfigs"
+>
+  <h1>Создание комплекта</h1>
+  <div 
+    class="config-menu_pick-solution" 
+    ng-class="{'config-menu_pick-solution_active': userSolution}" 
+    ng-click="pickSolution('default')"
+    style="margin-left: 40px;"
+  >Стандартные комплекты</div>
+  <div 
+    class="config-menu_pick-solution"
+    ng-class="{'config-menu_pick-solution_active': !userSolution}" 
+    ng-click="pickSolution('custom')"
+  >Произвольный комплект</div>
+  
+  <!-- Add default kit -->
+  <div style="margin: 0; padding: 0;" ng-show="userSolution">
+    <ul>
+      <li>
+        <input type="submit" ng-click="addDefaultKit(1)" value="Стандартный комплект №1">
+      </li>
+      <li>
+        <input type="submit" ng-click="addDefaultKit(2)" value="Стандартный комплект №2">
+      </li>
+      <li>
+        <input type="submit" ng-click="addDefaultKit(3)" value="Стандартный комплект №3">
+      </li>
+    </ul>
+  </div>
+  <!-- Add default kit -->
+  <!-- Add custom kit -->
+  <div style="margin: 0; padding: 0;" ng-show="!userSolution">
+    <ul>
+      <li>
+        <span>Высота комплекта(мм.):</span>
+        <input 
+          type="number" 
+          min="100" 
+          max="3000" 
+          step="10"
+          ng-model="rackLength"
+          ng-keydown="updateRackLength(rackLength)"
+          ng-change="updateRackLength(rackLength)"
+          placeholder="min:100 - max:3000"
+        >
+        <span class="validation-error" ng-if="showErrRackLength">Введено не корректное значение</span>
+      </li>
+          <li>
+        <span>Ширина комплекта(мм.):</span>
+        <input 
+          type="number" 
+          min="500" 
+          max="1500" 
+          step="10"
+          ng-model="shelfLength"
+          ng-keydown="updateShelfLength(shelfLength)"
+          ng-change="updateShelfLength(shelfLength)"
+          placeholder="min:500 - max:1500"
+        >
+        <span class="validation-error" ng-if="showErrShelfLength">Введено не корректное значение</span>
+      </li>
+      <li>
+        <span>Кол-во верикальных стоек(шт.):</span>
+        <label>
+          <select 
+            ng-init="rackResult = racksQuantity[0]"
+            ng-model="rackResult" 
+            ng-change="updateRackQuantity(rackResult.value)" 
+            ng-options="rack.value for rack in racksQuantity" 
+            required>
+          </select>
+        </label>
+      </li>
+      <li>
+        <span>Кол-во полок(шт.):</span>
+        <label>
+          <select 
+            ng-init="shelfResult = shelfsQuantity[0]"
+            ng-model="shelfResult" 
+            ng-change="updateShelfQuantity(shelfResult.value)" 
+            ng-options="shelf.value for shelf in shelfsQuantity | filter:shelfFilter" 
+            required>
+          </select>
+          <span class="validation-error" ng-if="showErrshelfsQuantity">Это обязательный параметр.</span>
+        </label>
+      </li>
+      <li>
+        <span>Ширина полок(мм.):</span>
+        <label>
+          <select 
+            ng-init="shelfWidth = shelfsWidth[0]"
+            ng-model="shelfWidth" 
+            ng-change="updateShelfWidth(shelfWidth.value)" 
+            ng-options="shelfW.title for shelfW in shelfsWidth" 
+            required>
+          </select>
+        </label>
+      </li>
+      <li><input type="submit" ng-click="addSection()" value="Добавить секцию" ng-disabled="!validationCheck"></li>
+    </ul>
+  </div>
+  <!-- Add custom kit END -->
+</div>
+<!-- Panel of kit configuration END -->
+<!-- Edit mode -->
+<rack-edit-target ng-show="showEditTarget"></rack-edit-target>
+<!-- Edit mode END -->
+<!-- Edit mode of room-->
+<rack-room-editor ng-if="showRoomEditor"></rack-room-editor>
+<!-- Edit mode of room END-->
+
+<!-- Direcite of ask -->
+<rack-ask ng-if="showAsk"></rack-ask>
+<!-- Direcite of ask END -->

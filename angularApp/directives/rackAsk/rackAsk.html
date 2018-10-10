@@ -1,0 +1,26 @@
+﻿<div class="ask">
+	<div class="ask_wrapp">
+		<form id="askForm" class="ask_wrapp_form">
+			<div class="login-form_main-container_logo"></div>
+			<div class="login-form_main-container_item">
+				Как Вас зовут: <input type="text" name="username" placeholder="Ф.И.О" ng-focus="disableControlls()" ng-blur="enableControlls()" ng-model="userName">
+			</div>
+			<div class="login-form_main-container_item">
+				Ваш Email: <input type="text" name="email" placeholder="Email" ng-focus="disableControlls()" ng-blur="enableControlls()" ng-model="userEmail">
+			</div>
+			<div class="login-form_main-container_item">
+				Ваш Телефон: <input type="text" name="phone" placeholder="Телефон" ng-focus="disableControlls()" ng-blur="enableControlls()" ng-model="userNumber">
+			</div>
+			<div class="login-form_main-container_item">
+				Ваш Вопрос: <textarea name="message" placeholder="Ваш вопрос" ng-focus="disableControlls()" ng-blur="enableControlls()" ng-model="userQuestion"></textarea>
+			</div>
+			<div class="login-form_main-container_item">
+				<input type="submit" name="submit" class="ask_wrapp_form_post" ng-click="sendQuestion()" valuse="Отправить">
+				<div class="ask_wrapp_form_close" ng-click="close()">Закрыть</div>
+			</div>
+			<div class="login-form_main-container_error" ng-if="showError">
+				Пожалуйста, заполните все обязательные поля!
+			</div>
+		</form>
+	</div>
+</div>

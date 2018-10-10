@@ -1,0 +1,71 @@
+[
+  {
+    "shelfs": {
+      "quantity": [
+        {"value": 1},
+        {"value": 2},
+        {"value": 3},
+        {"value": 4},
+        {"value": 5}
+      ],
+      "models": [
+        {
+          "name": "shelf-350", 
+          "value": "1500mm x 350mm"
+        },
+        {
+          "name": "shelf-450", 
+          "value": "1500mm x 450mm"
+        }
+      ]
+    },
+    "rails": {
+      "models": [
+        {
+          "name": "rail-1200", 
+          "value": "1200mm"
+        },
+        {
+          "name": "rail-2400", 
+          "value": "2400mm"
+        },
+        {
+          "name": "rail-3600", 
+          "value": "3600mm"
+        }
+      ]
+    },
+    "racks": {
+      "quantity": [
+        {"value": 1},
+        {"value": 2},
+        {"value": 3},
+        {"value": 4},
+        {"value": 5}
+      ],
+      "models": [
+        {
+          "name": "rack-500", 
+          "value": "500mm"
+        },
+        {
+          "name": "rack-1000", 
+          "value": "1000mm"
+        },
+        {
+          "name": "rack-1500", 
+          "value": "1500mm"
+        },
+        {
+          "name": "rack-2000", 
+          "value": "2000mm"
+        },
+        {
+          "name": "rack-2500", 
+          "value": "2500mm"
+        }
+      ]
+    },
+    "boxes": {}
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "rackLength": 1500,
+    "rackQuantity": 3,
+    "shelfLength": 1500,
+    "shelfQuantity": 5,
+    "shelfWidth": "shelf-350",
+    "shelfLevels": {
+      "1": null,
+      "2": 13,
+      "3": 25,
+      "4": 38,
+      "5": 50
+    },
+    "shelfOptions": {
+      "1": {"flip": true}
+    }
+  },
+  {
+    "id": 2,
+    "rackLength": 500,
+    "rackQuantity": 3,
+    "shelfLength": 1500,
+    "shelfQuantity": 2,
+    "shelfWidth": "shelf-450",
+    "shelfLevels": {
+      "1": null,
+      "2": 15
+    },
+    "shelfOptions": {
+      "2": {"hung": true}
+    }
+  },
+  {
+    "id": 3,
+    "rackLength": 1500,
+    "rackQuantity": 3,
+    "shelfLength": 1500,
+    "shelfQuantity": 5,
+    "shelfWidth": "shelf-350",
+    "shelfLevels": {
+      "1": null,
+      "2": 13,
+      "3": 25,
+      "4": 38,
+      "5": 50
+    },
+    "shelfOptions": {
+      "2": {"basket": true},
+      "3": {"basket": true},
+      "4": {"basket": true},
+      "5": {"basket": true}
+    }
+  }
+]
